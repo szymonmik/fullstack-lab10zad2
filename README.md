@@ -39,6 +39,10 @@
 </html>
 ```
 
+### Widok pliku html
+
+![](screens/1.png)
+
 ### Zawartość pliku dockerfile obrazu aplikacji:
 ```Dockerfile
 FROM nginx:alpine 
@@ -197,6 +201,18 @@ jobs:
 
 ### Potwierdzenie działania workflow
 
+#### Akcje w Github Actions
+
+![](screens/2.png)
+
+#### Widok przykładowego workflow
+
+![](screens/3.png)
+
+#### Po wykonaniu workflow na Docker Hub dodawane są kolejne wersje obrazu
+
+![](screens/4.png)
+
 ## Krok 3A:
 
 ### Zawartość pliku dockerfile
@@ -239,4 +255,32 @@ spec:
       backoffLimit: 1
 ```
 
-## Krok 4:
+## Krok 4A:
+
+#### Strona internetowa po uruchomieniu systemu
+
+![](screens/5.png)
+
+#### Wywołany workflow
+
+![](screens/6.png)
+
+#### Pomyślnie ukończony workflow
+
+![](screens/7.png)
+
+#### Potwierdzenie wysłania nowej wersji obrazu do repozytorium Docker Hub
+
+![](screens/8.png)
+
+#### Widok konsoli po użyciu kubectl get all
+
+![](screens/9.png)
+
+#### Potwierdzenie automatycznego zauktualizowania wersji w pliku index.html
+
+![](screens/10.png)
+
+#### Potwierdzenie automatycznego commita w repozytorium config-repo w celu zaktualizowania wersji obrazu
+
+![](screens/11.png)
