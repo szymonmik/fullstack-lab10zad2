@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: step-cd
+spec:
+  schedule: "*/2 * * * *"
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: step-cd
+              image: szymonmik/zad2gitops:latest
+              command: [sh, -e, -c]
+              args:
+                - git clone https://github.com/szymonmik/config-repo.git /tmp/config-repo &&
+                  sleep 10 &&
+                  cd tmp/config-repo &&
+                  kubectl apply -f deployment.yaml &&
+                  kubectl apply -f service.yaml &&
+                  kubectl apply -f ingress.yaml
+          restartPolicy: Never
+          serviceAccountName: gitops
+      backoffLimit: 1
